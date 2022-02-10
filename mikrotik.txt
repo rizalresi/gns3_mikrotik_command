@@ -1,0 +1,56 @@
+- DHCP Client
+- IP Address
+- Nat Masquerade 
+- Port Forwarding
+
+
+Router2
+- IP address
+- IP Route
+- IP DNS
+- DHCP Server
+- NAT Masquerade
+
+Mikrotik command
+
+ip dhcp otomatis ether 1:
+ip dhcp-client add interface=ether1 disabled=no
+
+ip route print
+ip addres print
+
+penambahan ip address ether 2
+ip address/add address=192.168.1.1/24 interface=ether2
+
+penambahan ip adrres ether 3
+ip address/add address=10.1.1.1/30 interface=ether3
+
+penambahan nat masquaerade di ether 1
+ip firewall nat add chain=srcnat out-interface=ether1 action=mamasquerade
+
+penambahan dns :
+ip dns set servers=192.168.253.2
+
+penambahan gateway :
+ip route add gateway=10.1.1.1
+
+penambahan ip forwarding:
+add action=dst-nat chain=dstnat dst-address=192.168.253.131 dst-port=8293 protocol=tcp to-addresses=10.1.1.2 to-ports=8291
+add action=dst-nat chain=dstnat dst-address=192.168.253.131 dst-port=8292 protocol=tcp to-addresses=10.10.10.2 to-ports=8291
+
+ip route add static routing:
+ip route/add dst-address=192.168.2.0/24 gateway=10.1.1.2
+
+
+
+
+VPCS command
+
+ip address:
+ip 192.168.1.2 255.255.255.0 192.168.1.1
+
+ip dns:
+ip dns 8.8.8.8 / ip dns (ip route mikrotik)
+
+
+
