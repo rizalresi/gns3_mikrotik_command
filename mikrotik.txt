@@ -41,7 +41,7 @@ add action=dst-nat chain=dstnat dst-address=192.168.253.131 dst-port=8292 protoc
 ip route add static routing:
 ip route/add dst-address=192.168.2.0/24 gateway=10.1.1.2
 
-
+system identity set name=R2
 
 
 VPCS command
