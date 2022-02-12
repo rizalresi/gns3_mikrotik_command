@@ -44,6 +44,17 @@ ip route/add dst-address=192.168.2.0/24 gateway=10.1.1.2
 mengganti nama router:
 system identity set name=R2
 
+dinamic routing :
+routing rip interface add interface=ether1 send=v2 receive=v2
+routing rip network add network=192.168.1.0/24
+routing rip network add network=192.168.10.0/24
+
+routing ospf :
+routing ospf instance set 0 router-id=10.10.10.10
+routing ospf network add network=192.168.1.0/28 area=backbone
+routing ospf network add network=192.168.10.0/24 area=backbone
+
+
 
 VPCS command
 
@@ -52,6 +63,11 @@ ip 192.168.1.2 255.255.255.0 192.168.1.1
 
 ip dns:
 ip dns 8.8.8.8 / ip dns (ip route mikrotik)
+
+alphine linux
+
+set ip addres:
+ifconfig eth0 192.168.1.2 netmask 255.255.255.240
 
 
 
